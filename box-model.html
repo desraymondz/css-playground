@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 968px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .box-model-visual {
+            position: relative;
+            padding: 60px;
+        }
+
+        .layer {
+            border: 3px solid;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .margin-layer {
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        .border-layer {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .padding-layer {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .content-layer {
+            background: #3b82f6;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 30px;
+            border: 3px solid #2563eb;
+        }
+
+        .label {
+            position: absolute;
+            font-weight: bold;
+            font-size: 0.85em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .margin-label {
+            background: #fbbf24;
+            top: 5px;
+            left: 5px;
+        }
+
+        .border-label {
+            background: #ef4444;
+            top: 65px;
+            left: 65px;
+        }
+
+        .padding-label {
+            background: #10b981;
+            top: 125px;
+            left: 125px;
+        }
+
+        .content-label {
+            background: #3b82f6;
+        }
+
+        .controls-section {
+            display: grid;
+            gap: 20px;
+        }
+
+        .control-group {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .control-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .color-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .margin-color { background: #fbbf24; }
+        .border-color { background: #ef4444; }
+        .padding-color { background: #10b981; }
+        .content-color { background: #3b82f6; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4b5563;
+            font-size: 0.9em;
+        }
+
+        .value-display {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .code-section {
+            grid-column: 1 / -1;
+        }
+
+        .code-display {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-property {
+            color: #38bdf8;
+        }
+
+        .code-value {
+            color: #fb923c;
+        }
+
+        .code-comment {
+            color: #64748b;
+        }
+
+        .preset-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .preset-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .preset-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        .info-box strong {
+            color: #1e40af;
+        }
+
+        .diagram-legend {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-box {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 CSS Box Model</h1>
+        <p class="subtitle">Every element is a box with 4 layers: Margin → Border → Padding → Content</p>
+
+        <div class="main-grid">
+            <!-- Visual Preview -->
+            <div class="card">
+                <h3>🎨 Live Box Model</h3>
+                <div class="box-model-visual">
+                    <div class="margin-layer" id="marginLayer">
+                        <span class="label margin-label">MARGIN</span>
+                        <div class="border-layer" id="borderLayer">
+                            <span class="label border-label">BORDER</span>
+                            <div class="padding-layer" id="paddingLayer">
+                                <span class="label padding-label">PADDING</span>
+                                <div class="content-layer">
+                                    <span class="content-label">CONTENT</span><br>
+                                    <small>Your actual element</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-legend">
+                    <div class="legend-item">
+                        <div class="legend-box margin-color"></div>
+                        <span><strong>Margin:</strong> Space outside</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box border-color"></div>
+                        <span><strong>Border:</strong> Edge line</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box padding-color"></div>
+                        <span><strong>Padding:</strong> Space inside</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box content-color"></div>
+                        <span><strong>Content:</strong> Your stuff</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="card">
+                <h3>🎛️ Controls</h3>
+                <div class="controls-section">
+                    <div class="control-group">
+                        <div class="control-header">
+                            <div class="color-indicator margin-color"></div>
+                            <span>Margin (Space Outside)</span>
+                        </div>
+                        <label>
+                            Margin Size
+                            <span class="value-display" id="marginValue">20px</span>
+                        </label>
+                        <input type="range" id="marginRange" min="0" max="60" value="20">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-header">
+                            <div class="color-indicator border-color"></div>
+                            <span>Border (Edge Line)</span>
+                        </div>
+                        <label>
+                            Border Width
+                            <span class="value-display" id="borderValue">3px</span>
+                        </label>
+                        <input type="range" id="borderRange" min="0" max="20" value="3">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-header">
+                            <div class="color-indicator padding-color"></div>
+                            <span>Padding (Space Inside)</span>
+                        </div>
+                        <label>
+                            Padding Size
+                            <span class="value-display" id="paddingValue">20px</span>
+                        </label>
+                        <input type="range" id="paddingRange" min="0" max="60" value="20">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-header">
+                            <div class="color-indicator content-color"></div>
+                            <span>Content (Width)</span>
+                        </div>
+                        <label>
+                            Content Width
+                            <span class="value-display" id="contentValue">200px</span>
+                        </label>
+                        <input type="range" id="contentRange" min="100" max="300" value="200">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Display -->
+            <div class="card code-section">
+                <h3>💻 Generated CSS Code</h3>
+                <div class="code-display" id="codeDisplay"></div>
+
+                <div class="preset-buttons">
+                    <button class="preset-btn" onclick="setPreset('default')">📦 Default</button>
+                    <button class="preset-btn" onclick="setPreset('compact')">🔒 Compact</button>
+                    <button class="preset-btn" onclick="setPreset('spacious')">🌊 Spacious</button>
+                    <button class="preset-btn" onclick="setPreset('nospace')">⚫ No Space</button>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Remember:</strong> Think of each HTML element as a box with 4 layers from outside to inside:<br>
+                    <strong>1. Margin</strong> → Pushes other elements away (invisible space outside)<br>
+                    <strong>2. Border</strong> → The visible edge around your element<br>
+                    <strong>3. Padding</strong> → Creates breathing room inside (space between border and content)<br>
+                    <strong>4. Content</strong> → Your actual text, images, or other content<br><br>
+                    <strong>Total width</strong> = margin + border + padding + content + padding + border + margin
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const marginRange = document.getElementById('marginRange');
+        const borderRange = document.getElementById('borderRange');
+        const paddingRange = document.getElementById('paddingRange');
+        const contentRange = document.getElementById('contentRange');
+        
+        const marginValue = document.getElementById('marginValue');
+        const borderValue = document.getElementById('borderValue');
+        const paddingValue = document.getElementById('paddingValue');
+        const contentValue = document.getElementById('contentValue');
+        
+        const marginLayer = document.getElementById('marginLayer');
+        const borderLayer = document.getElementById('borderLayer');
+        const paddingLayer = document.getElementById('paddingLayer');
+        
+        const codeDisplay = document.getElementById('codeDisplay');
+
+        function updateBoxModel() {
+            const margin = marginRange.value;
+            const border = borderRange.value;
+            const padding = paddingRange.value;
+            const content = contentRange.value;
+
+            marginValue.textContent = margin + 'px';
+            borderValue.textContent = border + 'px';
+            paddingValue.textContent = padding + 'px';
+            contentValue.textContent = content + 'px';
+
+            marginLayer.style.padding = margin + 'px';
+            borderLayer.style.borderWidth = border + 'px';
+            paddingLayer.style.padding = padding + 'px';
+            
+            document.querySelector('.content-layer').style.width = content + 'px';
+            document.querySelector('.content-layer').style.height = content + 'px';
+
+            const totalWidth = parseInt(margin) * 2 + parseInt(border) * 2 + parseInt(padding) * 2 + parseInt(content);
+
+            codeDisplay.innerHTML = `
+<span class="code-comment">/* The Box Model */</span>
+<span class="code-property">margin</span>: <span class="code-value">${margin}px</span>; <span class="code-comment">/* Space outside the element */</span>
+<span class="code-property">border</span>: <span class="code-value">${border}px solid #ef4444</span>; <span class="code-comment">/* The edge/outline */</span>
+<span class="code-property">padding</span>: <span class="code-value">${padding}px</span>; <span class="code-comment">/* Space inside the element */</span>
+<span class="code-property">width</span>: <span class="code-value">${content}px</span>; <span class="code-comment">/* Content area width */</span>
+
+<span class="code-comment">/* Total space taken = ${totalWidth}px */</span>
+            `.trim();
+        }
+
+        function setPreset(preset) {
+            switch(preset) {
+                case 'default':
+                    marginRange.value = 20;
+                    borderRange.value = 3;
+                    paddingRange.value = 20;
+                    contentRange.value = 200;
+                    break;
+                case 'compact':
+                    marginRange.value = 5;
+                    borderRange.value = 1;
+                    paddingRange.value = 10;
+                    contentRange.value = 150;
+                    break;
+                case 'spacious':
+                    marginRange.value = 40;
+                    borderRange.value = 5;
+                    paddingRange.value = 40;
+                    contentRange.value = 250;
+                    break;
+                case 'nospace':
+                    marginRange.value = 0;
+                    borderRange.value = 0;
+                    paddingRange.value = 0;
+                    contentRange.value = 200;
+                    break;
+            }
+            updateBoxModel();
+        }
+
+        marginRange.addEventListener('input', updateBoxModel);
+        borderRange.addEventListener('input', updateBoxModel);
+        paddingRange.addEventListener('input', updateBoxModel);
+        contentRange.addEventListener('input', updateBoxModel);
+
+        updateBoxModel();
+    </script>
+</body>
+</html>

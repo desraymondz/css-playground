@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Styling Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .preview-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .preview-box {
+            background-color: #3b82f6;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-text {
+            font-size: 24px;
+            font-weight: normal;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .controls-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            color: #f5576c;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .value-display {
+            display: inline-block;
+            background: #f5576c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f5576c;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #f093fb;
+            transform: scale(1.2);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f5576c;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        select:hover, input[type="color"]:hover {
+            border-color: #f5576c;
+        }
+
+        .color-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .code-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            grid-column: 1 / -1;
+        }
+
+        .code-display {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-property {
+            color: #38bdf8;
+        }
+
+        .code-value {
+            color: #fb923c;
+        }
+
+        .preset-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .preset-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .preset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .info-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .info-box strong {
+            color: #f59e0b;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .mini-btn {
+            padding: 8px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: 0.2s;
+        }
+
+        .mini-btn:hover {
+            border-color: #f5576c;
+            background: #fef2f2;
+        }
+
+        .mini-btn.active {
+            border-color: #f5576c;
+            background: #f5576c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Basic Styling Properties</h1>
+        <p class="subtitle">Experiment with colors, fonts, and text alignment!</p>
+
+        <div class="main-content">
+            <!-- Preview Section -->
+            <div class="preview-card">
+                <h3 style="margin-bottom: 20px; color: #333;">✨ Live Preview</h3>
+                <div class="preview-box" id="previewBox">
+                    <div class="demo-text" id="demoText">
+                        Hello World! 👋<br>This is your canvas
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls-card">
+                <!-- COLORS SECTION -->
+                <div class="section">
+                    <div class="section-title">🎨 Colors</div>
+                    <div class="color-controls">
+                        <div class="control-group">
+                            <label>Background Color</label>
+                            <input type="color" id="bgColor" value="#3b82f6">
+                        </div>
+                        <div class="control-group">
+                            <label>Text Color</label>
+                            <input type="color" id="textColor" value="#ffffff">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPOGRAPHY SECTION -->
+                <div class="section">
+                    <div class="section-title">✍️ Typography</div>
+                    
+                    <div class="control-group">
+                        <label>
+                            Font Size 
+                            <span class="value-display" id="sizeValue">24px</span>
+                        </label>
+                        <input type="range" id="fontSize" min="12" max="72" value="24">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Font Weight (Boldness)</label>
+                        <div class="btn-group">
+                            <button class="mini-btn" onclick="setWeight('300')">Light</button>
+                            <button class="mini-btn active" onclick="setWeight('400')">Normal</button>
+                            <button class="mini-btn" onclick="setWeight('600')">Semi-Bold</button>
+                            <button class="mini-btn" onclick="setWeight('700')">Bold</button>
+                            <button class="mini-btn" onclick="setWeight('900')">Black</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Font Family</label>
+                        <select id="fontFamily">
+                            <option value="Arial, sans-serif">Arial (Clean & Simple)</option>
+                            <option value="'Times New Roman', serif">Times New Roman (Classic)</option>
+                            <option value="'Courier New', monospace">Courier New (Typewriter)</option>
+                            <option value="Georgia, serif">Georgia (Elegant)</option>
+                            <option value="'Comic Sans MS', cursive">Comic Sans (Playful)</option>
+                            <option value="'Trebuchet MS', sans-serif">Trebuchet (Modern)</option>
+                            <option value="Impact, sans-serif">Impact (Bold)</option>
+                            <option value="Verdana, sans-serif">Verdana (Web-friendly)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- TEXT ALIGNMENT SECTION -->
+                <div class="section">
+                    <div class="section-title">📐 Text Alignment</div>
+                    <div class="btn-group">
+                        <button class="mini-btn" onclick="setAlign('left')">⬅️ Left</button>
+                        <button class="mini-btn" onclick="setAlign('center')">↔️ Center</button>
+                        <button class="mini-btn" onclick="setAlign('right')">➡️ Right</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Display -->
+        <div class="code-card">
+            <h3 style="margin-bottom: 15px; color: #333;">💻 CSS Code Generated</h3>
+            <div class="code-display" id="codeDisplay"></div>
+
+            <div class="preset-buttons">
+                <button class="preset-btn" onclick="setPreset('default')">🔵 Default</button>
+                <button class="preset-btn" onclick="setPreset('dark')">🌙 Dark Mode</button>
+                <button class="preset-btn" onclick="setPreset('vibrant')">🌈 Vibrant</button>
+                <button class="preset-btn" onclick="setPreset('minimal')">⚪ Minimal</button>
+                <button class="preset-btn" onclick="setPreset('retro')">📺 Retro</button>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Quick Tips:</strong><br>
+                • <strong>background-color</strong> changes the background<br>
+                • <strong>color</strong> changes the text color<br>
+                • <strong>font-size</strong> makes text bigger/smaller<br>
+                • <strong>font-weight</strong> makes text lighter/bolder<br>
+                • <strong>font-family</strong> changes the typeface style<br>
+                • <strong>text-align</strong> positions text horizontally
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const previewBox = document.getElementById('previewBox');
+        const demoText = document.getElementById('demoText');
+        const bgColor = document.getElementById('bgColor');
+        const textColor = document.getElementById('textColor');
+        const fontSize = document.getElementById('fontSize');
+        const fontFamily = document.getElementById('fontFamily');
+        const sizeValue = document.getElementById('sizeValue');
+        const codeDisplay = document.getElementById('codeDisplay');
+
+        let currentWeight = '400';
+        let currentAlign = 'left';
+
+        function updatePreview() {
+            const bg = bgColor.value;
+            const color = textColor.value;
+            const size = fontSize.value;
+            const family = fontFamily.value;
+
+            previewBox.style.backgroundColor = bg;
+            demoText.style.color = color;
+            demoText.style.fontSize = size + 'px';
+            demoText.style.fontWeight = currentWeight;
+            demoText.style.fontFamily = family;
+            demoText.style.textAlign = currentAlign;
+
+            sizeValue.textContent = size + 'px';
+
+            updateCode();
+        }
+
+        function updateCode() {
+            const weightNames = {
+                '300': 'light',
+                '400': 'normal',
+                '600': 'semi-bold',
+                '700': 'bold',
+                '900': 'black'
+            };
+
+            codeDisplay.innerHTML = `
+<span class="code-property">background-color</span>: <span class="code-value">${bgColor.value}</span>;
+<span class="code-property">color</span>: <span class="code-value">${textColor.value}</span>;
+<span class="code-property">font-size</span>: <span class="code-value">${fontSize.value}px</span>;
+<span class="code-property">font-weight</span>: <span class="code-value">${currentWeight}</span>; <span style="color: #64748b">/* ${weightNames[currentWeight]} */</span>
+<span class="code-property">font-family</span>: <span class="code-value">${fontFamily.value}</span>;
+<span class="code-property">text-align</span>: <span class="code-value">${currentAlign}</span>;
+            `.trim();
+        }
+
+        function setWeight(weight) {
+            currentWeight = weight;
+            document.querySelectorAll('.btn-group .mini-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            updatePreview();
+        }
+
+        function setAlign(align) {
+            currentAlign = align;
+            document.querySelectorAll('.section:last-child .mini-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            updatePreview();
+        }
+
+        function setPreset(preset) {
+            switch(preset) {
+                case 'default':
+                    bgColor.value = '#3b82f6';
+                    textColor.value = '#ffffff';
+                    fontSize.value = 24;
+                    fontFamily.value = 'Arial, sans-serif';
+                    currentWeight = '400';
+                    currentAlign = 'left';
+                    break;
+                case 'dark':
+                    bgColor.value = '#1e293b';
+                    textColor.value = '#f1f5f9';
+                    fontSize.value = 28;
+                    fontFamily.value = 'Verdana, sans-serif';
+                    currentWeight = '300';
+                    currentAlign = 'center';
+                    break;
+                case 'vibrant':
+                    bgColor.value = '#ec4899';
+                    textColor.value = '#fef08a';
+                    fontSize.value = 36;
+                    fontFamily.value = 'Impact, sans-serif';
+                    currentWeight = '900';
+                    currentAlign = 'center';
+                    break;
+                case 'minimal':
+                    bgColor.value = '#f8fafc';
+                    textColor.value = '#334155';
+                    fontSize.value = 20;
+                    fontFamily.value = 'Georgia, serif';
+                    currentWeight = '400';
+                    currentAlign = 'left';
+                    break;
+                case 'retro':
+                    bgColor.value = '#fbbf24';
+                    textColor.value = '#7c2d12';
+                    fontSize.value = 32;
+                    fontFamily.value = "'Courier New', monospace";
+                    currentWeight = '700';
+                    currentAlign = 'center';
+                    break;
+            }
+            
+            // Reset button states
+            document.querySelectorAll('.mini-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            updatePreview();
+        }
+
+        bgColor.addEventListener('input', updatePreview);
+        textColor.addEventListener('input', updatePreview);
+        fontSize.addEventListener('input', updatePreview);
+        fontFamily.addEventListener('change', updatePreview);
+
+        // Initialize
+        updatePreview();
+    </script>
+</body>
+</html>
