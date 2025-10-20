@@ -141,53 +141,53 @@
         const selectorData = {
             element: {
                 code: `<span class="code-comment">/* Element Selector - Targets all elements of that type */</span>
-<span class="code-selector">h1</span> {
-    <span class="code-property">color</span>: <span class="code-value">blue</span>;
+<span class="code-selector">h1</span> {<br>
+    <span class="code-property">color</span>: <span class="code-value">blue</span>; <br>
     <span class="code-property">font-size</span>: <span class="code-value">32px</span>;
-}
+<br>}<br><br>
 
-<span class="code-selector">p</span> {
-    <span class="code-property">color</span>: <span class="code-value">gray</span>;
-    <span class="code-property">line-height</span>: <span class="code-value">1.6</span>;
+<span class="code-selector">p</span> {<br>
+    <span class="code-property">color</span>: <span class="code-value">gray</span>;<br>
+    <span class="code-property">line-height</span>: <span class="code-value">1.6</span>;<br>
 }`,
                 explanation: 'Targets ALL elements of that HTML tag type. If you style <code>p</code>, it affects every paragraph!',
                 highlight: 'yellow'
             },
             class: {
-                code: `<span class="code-comment">/* Class Selector - Targets elements with that class */</span>
-<span class="code-selector">.special</span> {
-    <span class="code-property">background-color</span>: <span class="code-value">#dcfce7</span>;
-    <span class="code-property">padding</span>: <span class="code-value">15px</span>;
-    <span class="code-property">border-radius</span>: <span class="code-value">8px</span>;
-}
+                code: `<span class="code-comment">/* Class Selector - Targets elements with that class */</span><br>
+<span class="code-selector">.special</span> {<br>
+    <span class="code-property">background-color</span>: <span class="code-value">#dcfce7</span>;<br>
+    <span class="code-property">padding</span>: <span class="code-value">15px</span>;<br>
+    <span class="code-property">border-radius</span>: <span class="code-value">8px</span>;<br>
+}<br>
 
-<span class="code-comment">/* Multiple elements can have the same class */</span>
+<span class="code-comment">/* Multiple elements can have the same class */</span><br>
 <span class="code-comment">/* &lt;div class="special"&gt; */</span>`,
                 explanation: 'Targets ALL elements with that class name. Classes are reusable! Use the dot <code>.</code> before the class name.',
                 highlight: 'green'
             },
             id: {
-                code: `<span class="code-comment">/* ID Selector - Targets ONE unique element */</span>
-<span class="code-selector">#unique</span> {
-    <span class="code-property">background-color</span>: <span class="code-value">#fee2e2</span>;
-    <span class="code-property">font-weight</span>: <span class="code-value">bold</span>;
-    <span class="code-property">border</span>: <span class="code-value">2px solid red</span>;
-}
+                code: `<span class="code-comment">/* ID Selector - Targets ONE unique element */</span><br>
+<span class="code-selector">#unique</span> {<br>
+    <span class="code-property">background-color</span>: <span class="code-value">#fee2e2</span>;<br>
+    <span class="code-property">font-weight</span>: <span class="code-value">bold</span>;<br>
+    <span class="code-property">border</span>: <span class="code-value">2px solid red</span>;<br>
+<br>}<br>
 
-<span class="code-comment">/* Only ONE element should have this ID */</span>
+<span class="code-comment">/* Only ONE element should have this ID */</span><br>
 <span class="code-comment">/* &lt;div id="unique"&gt; */</span>`,
                 explanation: 'Targets ONE specific element with that ID. IDs must be unique! Use the hash <code>#</code> before the ID name.',
                 highlight: 'red'
             },
             universal: {
                 code: `<span class="code-comment">/* Universal Selector - Targets EVERYTHING */</span>
-<span class="code-selector">*</span> {
-    <span class="code-property">margin</span>: <span class="code-value">0</span>;
-    <span class="code-property">padding</span>: <span class="code-value">0</span>;
-    <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>;
-}
+<span class="code-selector">*</span> {<br>
+    <span class="code-property">margin</span>: <span class="code-value">0</span>;<br>
+    <span class="code-property">padding</span>: <span class="code-value">0</span>;<br>
+    <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>;<br>
+<br>}<br>
 
-<span class="code-comment">/* Applies to every single element */</span>
+<span class="code-comment">/* Applies to every single element */</span><br>
 <span class="code-comment">/* Often used for CSS resets */</span>`,
                 explanation: 'Targets EVERY element on the page. Use carefully! Often used at the start of CSS files to reset default browser styles.',
                 highlight: 'all'
