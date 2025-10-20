@@ -155,14 +155,12 @@
                 '900': 'black'
             };
 
-            codeDisplay.innerHTML = `
-<span class="code-property">background-color</span>: <span class="code-value">${bgColor.value}</span>;
-<span class="code-property">color</span>: <span class="code-value">${textColor.value}</span>;
-<span class="code-property">font-size</span>: <span class="code-value">${fontSize.value}px</span>;
-<span class="code-property">font-weight</span>: <span class="code-value">${currentWeight}</span>; <span style="color: #64748b">/* ${weightNames[currentWeight]} */</span>
-<span class="code-property">font-family</span>: <span class="code-value">${fontFamily.value}</span>;
-<span class="code-property">text-align</span>: <span class="code-value">${currentAlign}</span>;
-            `.trim();
+            codeDisplay.innerHTML = `<span class="code-property">background-color</span>: <span class="code-value">${bgColor.value}</span>;<br>
+<span class="code-property">color</span>: <span class="code-value">${textColor.value}</span>;<br>
+<span class="code-property">font-size</span>: <span class="code-value">${fontSize.value}px</span>;<br>
+<span class="code-property">font-weight</span>: <span class="code-value">${currentWeight}</span>; <span style="color: #64748b">/* ${weightNames[currentWeight]} */</span><br>
+<span class="code-property">font-family</span>: <span class="code-value">${fontFamily.value}</span>;<br>
+<span class="code-property">text-align</span>: <span class="code-value">${currentAlign}</span>;`;
         }
 
         function setWeight(weight) {

@@ -219,47 +219,39 @@
 
             switch(currentDisplay) {
                 case 'block':
-                    code = `
-<span class="code-comment">/* Block Display - Default for divs */</span>
-<span class="code-property">display</span>: <span class="code-value">block</span>;
+                    code = `<span class="code-comment">/* Block Display - Default for divs */</span><br>
+<span class="code-property">display</span>: <span class="code-value">block</span>;<br><br>
 
-<span class="code-comment">/* Each element takes full width */</span>
-<span class="code-comment">/* Elements stack vertically */</span>
-<span class="code-comment">/* Examples: div, h1, p, section */</span>
-                    `;
+<span class="code-comment">/* Each element takes full width */</span><br>
+<span class="code-comment">/* Elements stack vertically */</span><br>
+<span class="code-comment">/* Examples: div, h1, p, section */</span>`;
                     break;
 
                 case 'inline-block':
-                    code = `
-<span class="code-comment">/* Inline-Block Display */</span>
-<span class="code-property">display</span>: <span class="code-value">inline-block</span>;
+                    code = `<span class="code-comment">/* Inline-Block Display */</span><br>
+<span class="code-property">display</span>: <span class="code-value">inline-block</span>;<br><br>
 
-<span class="code-comment">/* Elements flow like text */</span>
-<span class="code-comment">/* Can set width and height */</span>
-<span class="code-comment">/* Great for buttons and badges */</span>
-                    `;
+<span class="code-comment">/* Elements flow like text */</span><br>
+<span class="code-comment">/* Can set width and height */</span><br>
+<span class="code-comment">/* Great for buttons and badges */</span>`;
                     break;
 
                 case 'flex-row':
-                    code = `
-<span class="code-comment">/* Flexbox - Horizontal Layout */</span>
-<span class="code-property">display</span>: <span class="code-value">flex</span>;
-<span class="code-property">flex-direction</span>: <span class="code-value">row</span>; <span class="code-comment">/* horizontal (default) */</span>
-<span class="code-property">justify-content</span>: <span class="code-value">${currentJustify}</span>; <span class="code-comment">/* horizontal spacing */</span>
-<span class="code-property">align-items</span>: <span class="code-value">${currentAlign}</span>; <span class="code-comment">/* vertical alignment */</span>
-<span class="code-property">gap</span>: <span class="code-value">10px</span>; <span class="code-comment">/* space between items */</span>
-                    `;
+                    code = `<span class="code-comment">/* Flexbox - Horizontal Layout */</span><br>
+<span class="code-property">display</span>: <span class="code-value">flex</span>;<br>
+<span class="code-property">flex-direction</span>: <span class="code-value">row</span>; <span class="code-comment">/* horizontal (default) */</span><br>
+<span class="code-property">justify-content</span>: <span class="code-value">${currentJustify}</span>; <span class="code-comment">/* horizontal spacing */</span><br>
+<span class="code-property">align-items</span>: <span class="code-value">${currentAlign}</span>; <span class="code-comment">/* vertical alignment */</span><br>
+<span class="code-property">gap</span>: <span class="code-value">10px</span>; <span class="code-comment">/* space between items */</span>`;
                     break;
 
                 case 'flex-column':
-                    code = `
-<span class="code-comment">/* Flexbox - Vertical Layout */</span>
-<span class="code-property">display</span>: <span class="code-value">flex</span>;
-<span class="code-property">flex-direction</span>: <span class="code-value">column</span>; <span class="code-comment">/* vertical */</span>
-<span class="code-property">justify-content</span>: <span class="code-value">${currentJustify}</span>; <span class="code-comment">/* vertical spacing */</span>
-<span class="code-property">align-items</span>: <span class="code-value">${currentAlign}</span>; <span class="code-comment">/* horizontal alignment */</span>
-<span class="code-property">gap</span>: <span class="code-value">10px</span>; <span class="code-comment">/* space between items */</span>
-                    `;
+                    code = `<span class="code-comment">/* Flexbox - Vertical Layout */</span><br>
+<span class="code-property">display</span>: <span class="code-value">flex</span>;<br>
+<span class="code-property">flex-direction</span>: <span class="code-value">column</span>; <span class="code-comment">/* vertical */</span><br>
+<span class="code-property">justify-content</span>: <span class="code-value">${currentJustify}</span>; <span class="code-comment">/* vertical spacing */</span><br>
+<span class="code-property">align-items</span>: <span class="code-value">${currentAlign}</span>; <span class="code-comment">/* horizontal alignment */</span><br>
+<span class="code-property">gap</span>: <span class="code-value">10px</span>; <span class="code-comment">/* space between items */</span>`;
                     break;
             }
 
