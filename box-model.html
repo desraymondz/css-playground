@@ -17,7 +17,8 @@
             <!-- Visual Preview -->
             <div class="card">
                 <h3>🎨 Live Box Model</h3>
-                <div class="box-model-visual" id="boxModelLayer">
+                <div style="text-align: center;">
+                    <div class="box-model-visual" id="boxModelLayer">
                     <div class="margin-layer" id="marginLayer">
                         <div class="border-layer" id="borderLayer">
                             <div class="padding-layer" id="paddingLayer">
@@ -27,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="diagram-legend">
@@ -98,7 +100,7 @@
                             Content Width
                             <span class="value-display" id="contentValue">200px</span>
                         </label>
-                        <input type="range" id="contentRange" min="100" max="300" value="200">
+                        <input type="range" id="contentRange" min="200" max="400" value="200">
                     </div>
                 </div>
             </div>
@@ -161,24 +163,24 @@
             borderLayer.style.padding = border + 'px';
             paddingLayer.style.padding = padding + 'px';
             
-            document.querySelector('.content-layer').style.width = content + 'px';
-            document.querySelector('.content-layer').style.height = content + 'px';
+            document.querySelector('.content-layer').style.minWidth = content + 'px';
+            document.querySelector('.content-layer').style.minHeight = content + 'px';
 
             const totalWidth = parseInt(margin) * 2 + parseInt(border) * 2 + parseInt(padding) * 2 + parseInt(content);
 
-            codeDisplay.innerHTML = `<span class="code-comment">/* The Box Model */</span>
+            codeDisplay.innerHTML = `<span class="code-comment">/* The Box Model */</span><br>
 
-<span class="code-property">margin</span>: <span class="code-value">${margin}px</span>; 
-<span class="code-comment">/* Space outside the element */</span>
+<span class="code-property">margin</span>: <span class="code-value">${margin}px</span>;
+<span class="code-comment">/* Space outside the element */</span><br>
 
 <span class="code-property">border</span>: <span class="code-value">${border}px solid #ef4444</span>; 
-<span class="code-comment">/* The edge/outline */</span>
+<span class="code-comment">/* The edge/outline */</span><br>
 
 <span class="code-property">padding</span>: <span class="code-value">${padding}px</span>; 
-<span class="code-comment">/* Space inside the element */</span>
+<span class="code-comment">/* Space inside the element */</span><br>
 
 <span class="code-property">width</span>: <span class="code-value">${content}px</span>; 
-<span class="code-comment">/* Content area width */</span>
+<span class="code-comment">/* Content area width */</span><br>
 
 <span class="code-comment">/* Total space taken = ${totalWidth}px */</span>`;
         }

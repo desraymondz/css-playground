@@ -81,6 +81,11 @@ h1 {
     background: #fbbf24;
     position: relative;
     padding: 60px;
+    display: inline-flex;
+    /* justify-content: left; */
+    /* align-items: flex-start; */
+    width: auto;
+    max-width: 100%;
 }
 
 .layer {
@@ -93,6 +98,7 @@ h1 {
 .margin-layer {
     border-color: #fbbf24;
     background: rgba(251, 191, 36, 1);
+    min-width: 200px;
 }
 
 .border-layer {
@@ -110,7 +116,10 @@ h1 {
     color: white;
     text-align: center;
     font-weight: bold;
-    padding: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+    width: auto;
 }
 
 .label {
@@ -279,6 +288,7 @@ input[type="range"]::-moz-range-thumb {
     margin-top: 20px;
     border-radius: 5px;
     font-size: 0.95em;
+    line-height: 1.8;
 }
 
 .info-box strong {
