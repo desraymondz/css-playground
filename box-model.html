@@ -17,15 +17,11 @@
             <!-- Visual Preview -->
             <div class="card">
                 <h3>🎨 Live Box Model</h3>
-                <div class="box-model-visual">
+                <div class="box-model-visual" id="boxModelLayer">
                     <div class="margin-layer" id="marginLayer">
-                        <span class="label margin-label">MARGIN</span>
                         <div class="border-layer" id="borderLayer">
-                            <span class="label border-label">BORDER</span>
                             <div class="padding-layer" id="paddingLayer">
-                                <span class="label padding-label">PADDING</span>
                                 <div class="content-layer">
-                                    <span class="content-label">CONTENT</span><br>
                                     <small>Your actual element</small>
                                 </div>
                             </div>
@@ -78,7 +74,7 @@
                             Border Width
                             <span class="value-display" id="borderValue">3px</span>
                         </label>
-                        <input type="range" id="borderRange" min="0" max="20" value="3">
+                        <input type="range" id="borderRange" min="0" max="60" value="3">
                     </div>
 
                     <div class="control-group">
@@ -142,6 +138,7 @@
         const paddingValue = document.getElementById('paddingValue');
         const contentValue = document.getElementById('contentValue');
         
+        const boxModelLayer = document.getElementById('boxModelLayer');
         const marginLayer = document.getElementById('marginLayer');
         const borderLayer = document.getElementById('borderLayer');
         const paddingLayer = document.getElementById('paddingLayer');
@@ -159,8 +156,9 @@
             paddingValue.textContent = padding + 'px';
             contentValue.textContent = content + 'px';
 
-            marginLayer.style.padding = margin + 'px';
-            borderLayer.style.borderWidth = border + 'px';
+            boxModelLayer.style.padding = margin + 'px';
+            // marginLayer.style.padding = margin + 'px';
+            borderLayer.style.padding = border + 'px';
             paddingLayer.style.padding = padding + 'px';
             
             document.querySelector('.content-layer').style.width = content + 'px';
@@ -168,15 +166,21 @@
 
             const totalWidth = parseInt(margin) * 2 + parseInt(border) * 2 + parseInt(padding) * 2 + parseInt(content);
 
-            codeDisplay.innerHTML = `
-<span class="code-comment">/* The Box Model */</span>
-<span class="code-property">margin</span>: <span class="code-value">${margin}px</span>; <span class="code-comment">/* Space outside the element */</span>
-<span class="code-property">border</span>: <span class="code-value">${border}px solid #ef4444</span>; <span class="code-comment">/* The edge/outline */</span>
-<span class="code-property">padding</span>: <span class="code-value">${padding}px</span>; <span class="code-comment">/* Space inside the element */</span>
-<span class="code-property">width</span>: <span class="code-value">${content}px</span>; <span class="code-comment">/* Content area width */</span>
+            codeDisplay.innerHTML = `<span class="code-comment">/* The Box Model */</span>
 
-<span class="code-comment">/* Total space taken = ${totalWidth}px */</span>
-            `.trim();
+<span class="code-property">margin</span>: <span class="code-value">${margin}px</span>; 
+<span class="code-comment">/* Space outside the element */</span>
+
+<span class="code-property">border</span>: <span class="code-value">${border}px solid #ef4444</span>; 
+<span class="code-comment">/* The edge/outline */</span>
+
+<span class="code-property">padding</span>: <span class="code-value">${padding}px</span>; 
+<span class="code-comment">/* Space inside the element */</span>
+
+<span class="code-property">width</span>: <span class="code-value">${content}px</span>; 
+<span class="code-comment">/* Content area width */</span>
+
+<span class="code-comment">/* Total space taken = ${totalWidth}px */</span>`;
         }
 
         function setPreset(preset) {

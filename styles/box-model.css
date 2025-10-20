@@ -78,6 +78,7 @@ h1 {
 }
 
 .box-model-visual {
+    background: #fbbf24;
     position: relative;
     padding: 60px;
 }
@@ -91,17 +92,17 @@ h1 {
 
 .margin-layer {
     border-color: #fbbf24;
-    background: rgba(251, 191, 36, 0.1);
+    background: rgba(251, 191, 36, 1);
 }
 
 .border-layer {
     border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.1);
+    background: rgba(239, 68, 68, 1);
 }
 
 .padding-layer {
     border-color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
+    background: rgba(16, 185, 129, 1);
 }
 
 .content-layer {
@@ -110,7 +111,6 @@ h1 {
     text-align: center;
     font-weight: bold;
     padding: 30px;
-    border: 3px solid #2563eb;
 }
 
 .label {
